@@ -1,5 +1,25 @@
 import { test, expect } from '@playwright/test';
 
+test('experiment setups are collapsed while questions and results remain visible', async ({ page }) => {
+  await page.goto('/#experiments');
+  const sections = ['downstream-performance', 'adversarial-samples', 'corruption-sweeps', 'adaptive-adversaries', 'structural-adversaries', 'paired-structural', 'standalone-matched'];
+  for (const id of sections) {
+    const section = page.locator(`#${id}`);
+    const setup = section.locator('details.experiment-setup');
+    await expect(setup).toHaveCount(1);
+    await expect(setup).not.toHaveAttribute('open', '');
+    await expect(section.locator(':scope > ul').first()).toContainText('Question:');
+    await expect(section.locator(':scope > ul').first()).toContainText('TL;DR:');
+    await expect(section.locator(':scope > ul').first()).toContainText('Core results:');
+    await expect(section.locator('.downstream-results, .adversarial-results, .stress-suite').first()).toBeVisible();
+  }
+  const setup = page.locator('#adversarial-samples .experiment-setup');
+  await setup.locator('summary').click();
+  await expect(setup.getByRole('heading', { name: 'Samplers', exact: true })).toBeVisible();
+  await setup.locator('summary').click();
+  await expect(setup.getByRole('heading', { name: 'Samplers', exact: true })).not.toBeVisible();
+});
+
 test('metric history renders formulas and hides the full baseline table', async ({ page }) => {
   await page.setViewportSize({ width: 1400, height: 1050 });
   await page.goto('/#likelihood-entropy-results');

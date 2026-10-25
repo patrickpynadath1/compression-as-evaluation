@@ -92,4 +92,58 @@
 
 </details>
 
+<details class="candidate-card">
+<summary>Zstd dictionary difference · mean over generated documents</summary>
+
+- **Per-document quantity:**
+
+$$
+\Delta(x)=\frac{L_C(x\mid d_D)-L_C(x\mid d_G)}{b(x)}.
+$$
+
+- **Score:**
+
+$$
+S_{\mathrm{mean}}=\frac1m\sum_{j=1}^m\Delta(y_j).
+$$
+
+- **Construction:** Average the signed difference over generated test documents only; retain negative values.
+- **Protocol:** current Zstandard level 10, window log 23; equal raw-dictionary byte budgets capped at 64 KiB; separate fit/test banks; independent document frames; bits per UTF-8 byte. Reuses cached rates across 1,176 configurations; no new generation or compression.
+- **França samplers:** 73/73 settings above the real control, including mirror and top-k IID.
+- **Corruption sweeps:** repetition 0/7; pollution 6/10; shuffling 8/10; collapse 4/7 settings above the real control.
+- **Paired structural tests:** 5/5 transformations increase the score relative to the same original documents; not a significance claim.
+- **Downstream:** Spearman correlation of negative score with the seven-task five-shot downstream average, across 24 Pythia size/checkpoint points per setting: t07: -0.645; t10: 0.469; t10-k20: -0.188; t10-p095: 0.410; t13: 0.261.
+- **Interpretation / decision:** A KL-motivated ablation, not an exact KL estimate. Detects all França settings but misses the repetition sweep; downstream correlations depend on decoding.
+- **Limits:** inherited source-overlap caveats remain; budgets vary by cohort; repeated checkpoints are not independent model runs.
+- **Source:** [download the analyses, paired scores, protocol descriptions and source hashes](assets/data/dictionary-variants.json).
+
+</details>
+
+<details class="candidate-card">
+<summary>Zstd dictionary difference · Wasserstein over documents</summary>
+
+- **Per-document quantity:**
+
+$$
+\Delta(x)=\frac{L_C(x\mid d_D)-L_C(x\mid d_G)}{b(x)}.
+$$
+
+- **Score:**
+
+$$
+S_{\mathrm{contrast}}=W_1\big(\{\Delta(x_i)\}_{i=1}^n,\{\Delta(y_j)\}_{j=1}^m\big).
+$$
+
+- **Construction:** Compute the same signed difference for real and generated test documents, then compare their distributions with equal document weights. Do not reverse the subtraction on real documents or take absolute values before transport.
+- **Protocol:** current Zstandard level 10, window log 23; equal raw-dictionary byte budgets capped at 64 KiB; separate fit/test banks; independent document frames; bits per UTF-8 byte. Reuses cached rates across 1,176 configurations; no new generation or compression.
+- **França samplers:** 73/73 settings above the real control, including mirror and top-k IID.
+- **Corruption sweeps:** repetition 7/7; pollution 10/10; shuffling 10/10; collapse 6/7 settings above the real control.
+- **Paired structural tests:** 2/5 transformations increase the score relative to the same original documents; not a significance claim.
+- **Downstream:** Spearman correlation of negative score with the seven-task five-shot downstream average, across 24 Pythia size/checkpoint points per setting: t07: 0.635; t10: 0.688; t10-k20: 0.729; t10-p095: 0.454; t13: 0.097.
+- **Interpretation / decision:** Promising alternative, not a rejected version: stronger corruption-sweep separation than the generated-only mean, but mixed paired structural sensitivity. Retain as a candidate; the main definition remains unchanged.
+- **Limits:** inherited source-overlap caveats remain; budgets vary by cohort; repeated checkpoints are not independent model runs.
+- **Source:** [download the analyses, paired scores, protocol descriptions and source hashes](assets/data/dictionary-variants.json).
+
+</details>
+
 - **Details:** quantitative historical comparisons follow; structural and standalone-matched results remain linked to their own protocols rather than pooled into the earlier sweep.

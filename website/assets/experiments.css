@@ -28,3 +28,7 @@
   #downstream-scatter { overflow-x: auto; }
   #downstream-scatter>svg { min-width: 540px; }
 }
+.experiment-setup { margin: 20px 0; padding: 16px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--wash); }
+.experiment-setup > summary { cursor: pointer; color: var(--blue); font: 650 13px/1.6 var(--sans); }
+.experiment-setup[open] > summary { padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.experiment-setup h4 { font: 700 15px/1.5 var(--sans); margin-top: 24px; }

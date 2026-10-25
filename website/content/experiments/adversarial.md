@@ -1,4 +1,10 @@
 - **Question:** do artificial samples receive worse scores than real OpenWebText, and by how much?
+- **TL;DR:** Score four families of synthetic text against a real OpenWebText control.
+- **Core results:** Conditional compression, SOL, energy distance, Gradient Moment and JCD place all 73/73 settings above the real control; Qwen NLL does so for 40/73. These are observed margins, not significance tests.
+
+<details class="experiment-setup">
+<summary>Experimental setup, methodology & interpretation</summary>
+
 - **Scope:** four França-inspired sampler families; 73 parameter/seed configurations; real-data control from the same experiment suite [@franca2026].
 
 #### Samplers
@@ -33,6 +39,15 @@ $$
 - **Short vertical marks:** family medians; computed from unrounded scores.
 - **Axes:** independent linear scales in each metric's native units; raw margin magnitudes are not comparable across metrics.
 
+#### Interpretation limits
+
+- **Control uncertainty:** one real-control configuration in this sweep; no confidence bands or significance claims.
+- **Ratios:** not used; near-zero or negative real-control scores can make ratios unstable or misleading.
+- **Detection counts:** number of configurations with strictly positive observed margins; not independent trials or a general detection rate.
+- **Scope:** paired structural corruptions and compression-matched attacks belong to separate experiments; not pooled into this result.
+
+</details>
+
 <div id="adversarial-results" class="adversarial-results" aria-label="Adversarial sample margins">
 <div id="adversarial-status" role="status" aria-live="polite">Loading saved adversarial results…</div>
 <div class="adversarial-key"><span class="positive-key">● Positive margin</span><span class="negative-key">● Negative margin</span><span>│ Median</span><span>Dashed line: real control</span></div>
@@ -43,10 +58,3 @@ $$
 <details class="experiment-data"><summary>All 73 configurations · raw scores and margins</summary><div id="adversarial-points" class="experiment-table"></div></details>
 <a href="assets/data/adversarial.json" download>Download scores, unrounded margins, and source hashes ↗</a>
 </div>
-
-#### Interpretation limits
-
-- **Control uncertainty:** one real-control configuration in this sweep; no confidence bands or significance claims.
-- **Ratios:** not used; near-zero or negative real-control scores can make ratios unstable or misleading.
-- **Detection counts:** number of configurations with strictly positive observed margins; not independent trials or a general detection rate.
-- **Scope:** paired structural corruptions and compression-matched attacks belong to separate experiments; not pooled into this result.

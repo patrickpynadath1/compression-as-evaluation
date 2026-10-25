@@ -1,4 +1,10 @@
 - **Question:** which changes to support and structure remain visible to each metric?
+- **TL;DR:** Change document support, shuffle sentence chunks or replace digits, and compare with independent real subsets.
+- **Core results:** Conditional compression exceeds the control mean in 8/13 held-out settings; Qwen NLL, SOL and energy distance in 9/13, Gradient Moment in 12/13 and JCD in 8/13. Not every setting is necessarily degraded text; the separate paired tests isolate transformation effects.
+
+<details class="experiment-setup">
+<summary>Experimental setup, methodology & interpretation</summary>
+
 - **Coverage:** 13 settings per phase; three real-control subsets per phase; development and held-out phases kept separate.
 - **Unique topic documents:** keyword-selected computing, science or politics documents without repeated-text sampling.
 - **Random unique documents:** a support-selection control, not necessarily degraded language.
@@ -9,9 +15,10 @@
 - **Controls:** phase-specific mean of three real subsets; table includes the observed control range.
 - **Important distinction:** these are comparisons with independent real subsets, not same-document before/after comparisons. Use the paired tests below to isolate transformation effects.
 
-<div class="stress-suite" data-suite="structural"><p role="status">Loading saved results…</p></div>
-
 - **Reading the plot:** positive margins indicate higher scores; negative margins indicate lower scores; each metric retains its native units. Hover or focus on a point for exact setting details.
 - **Uncertainty:** observed differences, not significance tests; settings and seeds are related, not independent detection trials.
 - **Data:** [download all five suites, raw scores, controls and source hashes](assets/data/stress-tests.json).
 
+</details>
+
+<div class="stress-suite" data-suite="structural"><p role="status">Loading saved results…</p></div>

@@ -1,4 +1,10 @@
 - **Question:** does reference-conditioned compression distance track downstream task performance?
+- **TL;DR:** Compare compression and baseline metrics with published downstream accuracy across Pythia sizes, training checkpoints and decoding settings.
+- **Core results:** The association depends on decoding; use the correlation tables and within-size checks below rather than treating the pooled trend as universal.
+
+<details class="experiment-setup">
+<summary>Experimental setup, methodology & interpretation</summary>
+
 - **Metric:** forward conditional-rate Wasserstein-1; smaller distances indicate closer coding-rate distributions.
 - **Comparators:** SOL, handcrafted-feature energy distance, Gradient Moment, and Qwen3-8B-Base negative log-likelihood; all displayed scores use lower-is-better orientation.
 - **Scope:** Pythia; separate analyses for each decoding setting.
@@ -27,19 +33,6 @@
 - **Unigram entropy:** no complete saved Pythia checkpoint table found; omitted rather than replaced with compression rate or combined with likelihood using an arbitrary sum.
 - **Controls:** separate pooled correlations, within-size correlations, and leave-one-size-out correlations; no fitted regression line or independence-based significance test.
 
-<div id="downstream-results" class="downstream-results" aria-label="Downstream performance results">
-<div class="experiment-toolbar"><label for="downstream-metric">Evaluation metric</label><select id="downstream-metric"><option value="conditional">Conditional compression W₁</option><option value="sol">SOL</option><option value="ed">Energy distance</option><option value="gm">Gradient Moment</option><option value="nll">Qwen3-8B-Base NLL</option></select></div>
-<div class="experiment-toolbar"><label for="downstream-setting">Decoding setting</label><select id="downstream-setting"><option value="t10">T = 1.0</option><option value="t07">T = 0.7</option><option value="t10-p095">T = 1.0 · top-p 0.95</option><option value="t10-k20">T = 1.0 · top-k 20</option><option value="t13">T = 1.3</option></select></div>
-<div id="downstream-status" role="status" aria-live="polite">Loading saved results…</div>
-<div id="downstream-legend" class="experiment-legend"></div>
-<div id="downstream-scatter" class="experiment-plot"></div>
-<div class="experiment-pair"><div id="downstream-distance" class="experiment-plot"></div><div id="downstream-accuracy" class="experiment-plot"></div></div>
-<div id="downstream-correlations" class="experiment-table"></div>
-<div id="downstream-comparison" class="experiment-table"></div>
-<details class="experiment-data"><summary>All 24 plotted points · selected decoding setting</summary><div id="downstream-points" class="experiment-table"></div></details>
-<a href="assets/data/downstream.json" download>Download all 120 measurements and source hashes ↗</a>
-</div>
-
 #### Reading the figures
 
 - **Scatter:** one point per size–checkpoint pair; color and marker shape identify model size; horizontal axis is the selected evaluation score, lower is better; vertical axis is downstream accuracy, higher is better; hover or focus a point for its update and values.
@@ -54,3 +47,18 @@
 - **Sampling:** one generation seed and one displayed reference split; no uncertainty intervals shown; packed reference rows can share original source documents.
 - **Interpretation:** association with this seven-task aggregate, not a causal effect or a validated general measure of language quality.
 - **Sources:** [published Pythia evaluation archive](https://github.com/EleutherAI/pythia/tree/a19eecb807ec2c79a39ebf18108816e6ffffc1d5/evals/pythia-v1); local conditional-direction analysis `8630a5e84115aef93a3a`; exact source paths and SHA-256 hashes in the downloadable data.
+
+</details>
+
+<div id="downstream-results" class="downstream-results" aria-label="Downstream performance results">
+<div class="experiment-toolbar"><label for="downstream-metric">Evaluation metric</label><select id="downstream-metric"><option value="conditional">Conditional compression W₁</option><option value="sol">SOL</option><option value="ed">Energy distance</option><option value="gm">Gradient Moment</option><option value="nll">Qwen3-8B-Base NLL</option></select></div>
+<div class="experiment-toolbar"><label for="downstream-setting">Decoding setting</label><select id="downstream-setting"><option value="t10">T = 1.0</option><option value="t07">T = 0.7</option><option value="t10-p095">T = 1.0 · top-p 0.95</option><option value="t10-k20">T = 1.0 · top-k 20</option><option value="t13">T = 1.3</option></select></div>
+<div id="downstream-status" role="status" aria-live="polite">Loading saved results…</div>
+<div id="downstream-legend" class="experiment-legend"></div>
+<div id="downstream-scatter" class="experiment-plot"></div>
+<div class="experiment-pair"><div id="downstream-distance" class="experiment-plot"></div><div id="downstream-accuracy" class="experiment-plot"></div></div>
+<div id="downstream-correlations" class="experiment-table"></div>
+<div id="downstream-comparison" class="experiment-table"></div>
+<details class="experiment-data"><summary>All 24 plotted points · selected decoding setting</summary><div id="downstream-points" class="experiment-table"></div></details>
+<a href="assets/data/downstream.json" download>Download all 120 measurements and source hashes ↗</a>
+</div>
