@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{TITLE}} — Research notebook</title>
+  <title>{{TITLE}} | Patrick Pynadath</title>
   <meta name="description" content="{{DESCRIPTION}}">
-  <meta name="theme-color" content="#f8f7f3">
+  <meta name="theme-color" content="#f8fafb">
+  <script src="assets/theme.js"></script>
   <meta property="og:type" content="article">
   <meta property="og:title" content="{{TITLE}}">
   <meta property="og:description" content="{{DESCRIPTION}}">
@@ -15,49 +16,49 @@
   <link rel="stylesheet" href="assets/fonts/source-serif-4/index.css">
   <link rel="stylesheet" href="assets/katex/katex.min.css">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/blog-accents.css">
+  <link rel="stylesheet" href="assets/theme.css">
+  <link rel="stylesheet" href="assets/experiments.css">
+  <link rel="stylesheet" href="assets/adversarial.css">
   <script src="assets/app.js" defer></script>
+  <script src="assets/downstream.js" defer></script>
+  <script src="assets/adversarial.js" defer></script>
+  <script src="assets/stress-tests.js" defer></script>
 </head>
 <body data-hypothesis-group="{{GROUP}}">
   <a class="skip-link" href="#article">Skip to article</a>
   <div class="reading-progress" aria-hidden="true"><div id="reading-progress-bar"></div></div>
   <header class="site-header">
-    <a class="wordmark" href="#top"><span class="brand-symbol" aria-hidden="true">c<span>↘</span></span>Compression <span class="wordmark-light">/ research notes</span></a>
+    <a class="wordmark" href="https://patrickpynadath1.github.io/blog/"><span class="brand-symbol" aria-hidden="true">c<span>↘</span></span>Patrick Pynadath <span class="wordmark-light">/ Blog</span></a>
     <nav class="header-actions" aria-label="Article actions">
       <a href="#bibliography" class="references-nav">References <span>{{CITATION_COUNT}}</span></a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false" title="Toggle dark mode" hidden><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"/></svg><svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg></button>
       <button id="comment-button" class="comment-button" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-6 4V6a2 2 0 0 1 2-2Z"/></svg><span>Comment mode</span></button>
     </nav>
   </header>
   <div class="page-shell" id="top">
     <aside class="contents" aria-label="Table of contents">
-      <div class="contents-label">In this notebook <span>{{SECTION_COUNT}}</span></div>
+      <div class="contents-label">Contents <span>{{SECTION_COUNT}}</span></div>
       <nav><ol>{{TOC}}<li><a href="#bibliography"><span>↗</span>Bibliography</a></li></ol></nav>
-      <div class="contents-bottom"><span class="status-dot"></span> {{STATUS}}<p>A living article. Select text in comment mode to leave a note.</p></div>
     </aside>
     <main id="article">
       <header class="article-header">
-        <div class="eyebrow">{{EYEBROW}}</div>
         <h1>Compression<br><em>as evaluation.</em></h1>
-        <p class="research-question">{{DESCRIPTION}}</p>
-        <div class="article-meta"><span class="draft-pill">{{STATUS}}</span><span>Notation &amp; methods scaffold</span><span>Open for discussion</span></div>
         <div class="hero-rule"></div>
-        <div class="metric-preview"><div><div class="small-label">The idea, in one line</div><p>Compare how reference and generated text compress under the <em>same reference context.</em></p></div><div class="metric-preview-formula">{{HERO_MATH}}<a href="#metric-definition">Read the definition <span>↗</span></a></div></div>
-        <div class="draft-notice"><span>About this draft</span> The notation and metric definitions are in place. Other sections are intentionally left as writing prompts—not completed claims or results.</div>
       </header>
       <details class="mobile-contents"><summary>Contents <span>↓</span></summary><nav><ol>{{TOC}}</ol></nav></details>
       <article aria-label="Research article">{{SECTIONS}}</article>
       <section class="chapter bibliography" id="bibliography" role="doc-bibliography">
         <div class="section-number">REF</div><h2>Bibliography</h2>
-        <p class="bibliography-intro">References are generated from BibTeX. Citation links return here; the arrows take you back to the text.</p>
         {{REFERENCES}}<a class="download-bib" href="references.bib" download>Download bibliography <span>.bib ↓</span></a>
       </section>
-      <footer class="article-footer"><span>Compression as evaluation</span><span>Built for reading, thinking, and discussion.</span><a href="#top">Back to top ↑</a></footer>
+      <footer class="article-footer"><a href="https://patrickpynadath1.github.io/blog/">← All posts</a><a href="#top">Back to top ↑</a></footer>
     </main>
   </div>
   <dialog id="comments-dialog" aria-labelledby="comments-title">
     <form method="dialog"><button class="dialog-close" aria-label="Close comments information">×</button></form>
-    <div class="eyebrow">Discuss in the margins</div><h2 id="comments-title">A shared reading space.</h2>
-    <p>Comment mode uses <strong>Hypothesis</strong>. Highlight text, choose <em>Annotate</em>, and leave a comment tied to that passage. Sign in to Hypothesis to post or reply.</p>
-    <ol class="comment-steps"><li>Enable the annotation sidebar.</li><li>Select a private group for draft review, or the public layer.</li><li>Highlight a passage and add your note.</li></ol>
+    <h2 id="comments-title">Comments</h2>
+    <p>Sign in to Hypothesis, select text, and choose <em>Annotate</em>.</p>
     <div class="privacy-note">Shared comments are stored by Hypothesis, not GitHub Pages. Enabling this loads their client and connects to their service. Public-layer annotations are public; use a private group for private feedback.</div>
     <p id="comment-status" role="status" aria-live="polite"></p>
     <button id="enable-comments" class="primary-button" type="button">Enable shared annotations <span>↗</span></button>

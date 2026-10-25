@@ -1,2 +1,3 @@
-> Draft — Organize alternatives around what each experiment taught us, rather than presenting an exhaustive experiment log.
-
+- **Selection criterion:** evaluate against reference data without requiring a pretrained language-model evaluator.
+- **Reading this section:** distinguish observed failures, incomplete diagnostics, and methods excluded because they do not meet the model-free objective.
+- **Not a claim that every earlier metric failed:** several detect every França setting; those successes alone do not establish sensitivity to structure or distributional similarity.

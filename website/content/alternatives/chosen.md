@@ -1,2 +1,5 @@
-> Draft — Summarize the case for conditional coding-rate Wasserstein, including what it does not establish.
-
+- **Current main candidate:** Wasserstein distance between per-document coding rates under the same fixed real-data context.
+- **Why retain it:** entirely compressor-based; references determine the context; responds to all three standalone-rate-matched attacks in the separate held-out test.
+- **Why keep ablations:** standalone rates, generated-context rates and the bidirectional sum expose which parts of the score contribute.
+- **Known limit:** real-context conditional W₁ decreases for all five paired structural transformations; the bidirectional sum does not fix that result.
+- **Evidence:** [standalone-matched attacks](#standalone-matched), [paired structural tests](#paired-structural), [downstream evaluation](#downstream-performance).

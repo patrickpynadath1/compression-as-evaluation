@@ -33,8 +33,25 @@ Open the URL printed by Astro. `bun run build` writes `dist/`;
 The main article combines the Markdown sections before rendering so every
 section shares one citation numbering scheme and bibliography. Its HTML shell
 is `templates/article.html`; `src/lib/article.ts` validates and renders it.
-Unfinished sections explicitly say **Draft**. No experimental results have
-been invented to fill the outline.
+Article content currently contains only section headings, equations, notation,
+and citations. Empty section files intentionally remain available for writing.
+`assets/blog-accents.css` adds subtle cyan accents from the older blog while
+retaining the serif typography and sidebar layout.
+The header's moon/sun button switches between light and dark themes and remembers
+the choice in this browser. Light remains the default; printed pages stay light.
+
+The first experiment uses `content/experiments/downstream.md` (bullet-only setup)
+and `assets/downstream.js` (SVG figures). Its portable 120-point snapshot lives in
+`assets/data/downstream.json`; the website build requires no research cache.
+Refresh it from the original saved results with `python3 scripts/export_downstream.py`
+from this directory. That exporter validates cohort counts, joins five-shot
+benchmark scores, recomputes rank correlations, and records source hashes.
+
+The adversarial subsection uses `content/experiments/adversarial.md`,
+`assets/adversarial.js`, and `assets/data/adversarial.json`. Refresh its 73 matched
+configurations across six metrics with `python3 scripts/export_adversarial.py`.
+Margins use each metric's saved real-data control and are computed before rounding;
+the plot panels intentionally keep separate native-unit scales.
 
 ## GitHub Pages
 
@@ -71,3 +88,10 @@ Browser tests require Chromium (`bunx playwright install chromium`). Set
 `PLAYWRIGHT_CHROMIUM_EXECUTABLE` to reuse an existing browser. They check narrow
 layouts, citations, collapsed-section navigation, and opt-in annotation loading
 using a mocked embed endpoint; authenticated posting is not tested.
+# Additional stress-test snapshots
+
+- Refresh historical metric comparisons and likelihood-minus-compression baselines with `python website/scripts/export_metric_history.py`; this writes two generated Markdown sections and `assets/data/metric-history.json` from cached results, without GPU scoring.
+
+- Refresh the five additional suites with `python website/scripts/export_stress_tests.py` from the repository root.
+- `assets/data/stress-tests.json` contains raw scores, unrounded margins, phase-specific controls and source hashes; the static build does not need the research cache.
+- Corruption, adaptive and structural suites include six metrics. Paired structural and standalone-matched suites expose only their available compression measurements, not unmatched learned-metric scores.

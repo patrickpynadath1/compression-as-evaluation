@@ -1,0 +1,40 @@
+.adversarial-results, .stress-suite { margin: 28px 0; --positive: #2584a1; --negative: #b45b37; }
+[data-theme='dark'] .adversarial-results, [data-theme='dark'] .stress-suite { --positive: #83dbea; --negative: #f5ac82; }
+#adversarial-status, .adversarial-key, .adversarial-meta { font: 11px/1.8 var(--sans); color: var(--muted); }
+.adversarial-key { display: flex; flex-wrap: wrap; gap: 18px; margin: 12px 0 18px; }
+.positive-key { color: var(--positive); }
+.negative-key { color: var(--negative); }
+.adversarial-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.adversarial-panel { min-width: 0; border: 1px solid var(--line); border-radius: 12px; padding: 16px 12px 10px; background: var(--paper); }
+.adversarial-panel h4 { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font: 600 13px/1.6 var(--sans); margin: 0 0 5px; }
+.adversarial-panel h4 span { white-space: nowrap; font-size: 10px; font-weight: 400; color: var(--muted); }
+.adversarial-plot svg { width: 100%; display: block; margin-top: 12px; }
+.adversarial-zero { stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 4 3; }
+.adversarial-point { stroke: var(--paper); stroke-width: .7; cursor: pointer; }
+.adversarial-point.positive { fill: var(--positive); }
+.adversarial-point.negative { fill: var(--negative); }
+.adversarial-point:focus, .adversarial-point:hover { stroke: var(--ink); stroke-width: 2; outline: none; }
+.adversarial-median { stroke: var(--ink); stroke-width: 2; pointer-events: none; }
+.adversarial-detail { display: block; min-height: 70px; margin: 16px 0; border-left: 2px solid var(--blue); background: var(--wash); padding: 10px 14px; font: 12px/1.8 var(--sans); }
+.adversarial-results>a { display: inline-block; font-size: 12px; margin-top: 16px; }
+#adversarial-samples h4 { font-family: var(--sans); font-size: 15px; margin-top: 28px; }
+#adversarial-samples .adversarial-panel h4 { font-size: 13px; margin-top: 0; }
+#adversarial-samples li { font-size: 16px; line-height: 1.8; margin: 8px 0; }
+@media(max-width: 760px) {
+  .adversarial-panels { grid-template-columns: 1fr; }
+  .adversarial-plot { overflow-x: auto; }
+  .adversarial-plot svg { min-width: 340px; }
+}
+.stress-chart svg { width:100%; min-width:740px; display:block; }
+.stress-suite { margin:1.5rem 0; }
+.stress-suite .experiment-toolbar label { display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; }
+.stress-suite .experiment-toolbar select { max-width:100%; }
+.stress-suite .stress-status { color:var(--muted); font-size:.85rem; }
+.stress-chart { max-height: 530px; overflow: auto; border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+.stress-raw { border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin: 20px 0; }
+.stress-raw summary { color: var(--blue); font-weight: 650; }
+.stress-raw .stress-table { max-height: 420px; overflow: auto; margin-bottom: 0; }
+.stress-raw th { position: sticky; top: 0; }
+.stress-suite label[hidden] { display: none; }
+.stress-chart-hint { font: 12px/1.6 var(--sans); color: var(--muted); }
+.stress-chart:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }

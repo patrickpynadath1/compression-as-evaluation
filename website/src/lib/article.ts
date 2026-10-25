@@ -37,7 +37,7 @@ export async function renderArticle(): Promise<string> {
     const heading = `<h${level}><a class="heading-link" href="#${section.id}">${escape(section.title)}<span aria-hidden="true" class="permalink"> ↗</span></a></h${level}>`;
     const children = [];
     for (const child of section.children || []) children.push(await sectionMarkdown(child, level + 1));
-    const source = `<a class="source-link" href="source/${escape(section.file)}">Markdown source ↗</a>`;
+    const source = '';
     if (section.collapsible) return `<details class="expandable" id="${section.id}">\n<summary>${heading}<span class="expand-label">Expand +</span></summary>\n<div class="section-body">\n\n${markdown}\n\n${source}\n</div>\n</details>`;
     return `<section id="${section.id}" class="article-section ${level === 2 ? 'chapter' : 'subsection'} ${markdown.startsWith('> Draft') ? 'draft-section' : ''}">\n${number ? `<div class="section-number">${number.padStart(2,'0')}</div>` : ''}\n${heading}\n\n${markdown}\n\n${children.join('\n\n')}\n\n${source}\n</section>`;
   }

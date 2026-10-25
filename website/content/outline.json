@@ -28,10 +28,20 @@
     {"id":"metric-computation","title":"Computation","file":"proposed/computation.md"}
   ]},
   {"id":"experiments","title":"Experiments","file":"experiments/index.md","children":[
+    {"id":"downstream-performance","title":"Does it track downstream performance?","file":"experiments/downstream.md"},
+    {"id":"adversarial-samples","title":"Does it detect adversarial samples?","file":"experiments/adversarial.md"},
+    {"id":"corruption-sweeps","title":"Corruption & collapse sweeps","file":"experiments/corruption.md"},
+    {"id":"adaptive-adversaries","title":"Adaptive adversaries","file":"experiments/adaptive.md"},
+    {"id":"structural-adversaries","title":"Structural adversaries","file":"experiments/structural.md"},
+    {"id":"paired-structural","title":"Paired structural tests","file":"experiments/paired.md"},
+    {"id":"standalone-matched","title":"Standalone compression-matched adversaries","file":"experiments/matched.md"},
     {"id":"interpretability","title":"Interpretability","file":"experiments/interpretability.md"}
   ]},
   {"id":"alternatives","title":"Alternative metrics we tried","file":"alternatives/index.md","children":[
     {"id":"chosen-metric","title":"The metric we decided on","file":"alternatives/chosen.md"},
-    {"id":"unsuccessful-metrics","title":"The metrics that did not work","file":"alternatives/unsuccessful.md"}
+    {"id":"unsuccessful-metrics","title":"Earlier candidates: evidence & trade-offs","file":"alternatives/unsuccessful.md"},
+    {"id":"metric-history-results","title":"Earlier metrics: quantitative comparisons","file":"alternatives/history-results.md"},
+    {"id":"likelihood-entropy-baseline","title":"The obvious baseline: likelihood minus entropy","file":"alternatives/kl-baseline.md"},
+    {"id":"likelihood-entropy-results","title":"Likelihood & compression: baseline results","file":"alternatives/kl-results.md"}
   ]}
 ]

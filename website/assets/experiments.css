@@ -1,0 +1,30 @@
+.downstream-results { margin: 28px 0; padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.downstream-results h4 { font: 600 13px var(--sans); color: var(--ink); margin: 24px 0 12px; }
+.experiment-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 12px; }
+.experiment-toolbar + .experiment-toolbar { margin-top: 12px; }
+.experiment-toolbar select { background: var(--wash); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 9px; font: inherit; }
+#downstream-status { margin: 16px 0; font-size: 12px; color: var(--muted); line-height: 1.7; }
+.experiment-legend { display: flex; gap: 20px; flex-wrap: wrap; font-size: 11px; }
+.experiment-legend span { display: flex; align-items: center; gap: 5px; }
+.experiment-legend svg { width: 20px; height: 20px; }
+.experiment-plot { min-width: 0; }
+.experiment-plot>svg { width: 100%; height: auto; display: block; overflow: visible; }
+.chart-grid { stroke: var(--line); stroke-width: 1; }
+.chart-label { font: 10px var(--sans); fill: var(--muted); }
+.experiment-plot g:focus { outline: 2px solid var(--blue); outline-offset: 3px; }
+.experiment-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.experiment-table { max-width: 100%; overflow-x: auto; margin: 20px 0; }
+.experiment-table table { border-collapse: collapse; width: 100%; font: 11px var(--sans); font-variant-numeric: tabular-nums; line-height: 1.6; }
+.experiment-table td, .experiment-table th { padding: 10px; text-align: left; border-bottom: 1px solid var(--line); }
+.experiment-table th { font-weight: 600; color: var(--muted); background: var(--wash); }
+.experiment-table td:first-child { white-space: nowrap; }
+.experiment-data summary, .downstream-results>a { font-size: 12px; cursor: pointer; }
+#downstream-performance h4 { font-family: var(--sans); font-size: 15px; margin-top: 28px; }
+#downstream-performance li { font-size: 16px; line-height: 1.8; margin: 8px 0; }
+@media(max-width: 760px) {
+  .experiment-pair { grid-template-columns: 1fr; }
+  .downstream-results { padding: 12px; }
+  .experiment-legend { gap: 10px; }
+  #downstream-scatter { overflow-x: auto; }
+  #downstream-scatter>svg { min-width: 540px; }
+}
