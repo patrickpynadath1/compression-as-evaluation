@@ -1,5 +1,28 @@
 import { test, expect } from '@playwright/test';
 
+test('candidate selector shows one complete comparison at a time', async ({ page }) => {
+  await page.setViewportSize({ width: 1400, height: 1050 });
+  await page.goto('/#unsuccessful-metrics');
+  const selector = page.locator('#candidate-select');
+  await expect(selector.locator('option')).toHaveCount(12);
+  for (let index = 0; index < 12; index++) {
+    await selector.selectOption(`candidate-option-${index}`);
+    await expect(page.locator('.candidate-view:visible')).toHaveCount(1);
+    const view = page.locator(`#candidate-option-${index}`);
+    for (const title of ['Why this was reasonable', 'Definition & computation', 'Observed results', 'Criteria & decision']) {
+      await expect(view.getByRole('heading', { name: title, exact: true })).toBeVisible();
+    }
+  }
+  await selector.selectOption('candidate-option-0');
+  await expect(page.locator('#candidate-option-0')).toContainText('9/18');
+  await page.locator('#candidate-option-0').screenshot({ path: '../.cache/website-preview/candidate-selector.png', style: '.site-header { visibility: hidden; }' });
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.locator('#theme-toggle').click();
+  await selector.selectOption('candidate-option-11');
+  await expect(page.locator('#candidate-option-11')).toContainText('2/5');
+});
+
 test('experiment setups are collapsed while questions and results remain visible', async ({ page }) => {
   await page.goto('/#experiments');
   const sections = ['downstream-performance', 'adversarial-samples', 'corruption-sweeps', 'adaptive-adversaries', 'structural-adversaries', 'paired-structural', 'standalone-matched'];
