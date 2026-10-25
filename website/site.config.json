@@ -1,0 +1,8 @@
+{
+  "title": "Compression as evaluation",
+  "description": "Can we use compression to evaluate generated text using the reference data itself as the standard, rather than importing a definition of good language from a pretrained model or a hand-designed feature set?",
+  "eyebrow": "Research notebook · Language generation",
+  "status": "Working draft",
+  "canonicalUrl": "",
+  "hypothesisGroup": ""
+}

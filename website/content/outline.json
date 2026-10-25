@@ -1,0 +1,37 @@
+[
+  {"id":"introduction","title":"Introduction","file":"introduction.md"},
+  {"id":"motivation","title":"Motivation","file":"motivation.md"},
+  {"id":"notation","title":"Notation & evaluation setting","file":"notation/index.md","children":[
+    {"id":"notation-symbols","title":"Symbols","file":"notation/symbols.md"},
+    {"id":"notation-information","title":"Information-theoretic quantities","file":"notation/information.md"},
+    {"id":"notation-compression","title":"Coding rates & reference savings","file":"notation/compression.md"}
+  ]},
+  {"id":"existing-metrics","title":"Existing metrics","file":"metrics/index.md","children":[
+    {"id":"metric-gm","title":"Gradient Moment (GM)","file":"metrics/gm.md"},
+    {"id":"metric-energy","title":"Energy distance","file":"metrics/energy.md"},
+    {"id":"metric-sol","title":"Sliced Optimal Transport for Language (SOL)","file":"metrics/sol.md"},
+    {"id":"metric-mauve","title":"MAUVE","file":"metrics/mauve.md"}
+  ]},
+  {"id":"desiderata","title":"Desiderata for a language generation metric","file":"desiderata.md"},
+  {"id":"why-compression","title":"Why compression","file":"why-compression/index.md","children":[
+    {"id":"prefix-free-codes","title":"Distributions and prefix-free codes","file":"why-compression/prefix-free.md","collapsible":true},
+    {"id":"historical-roots","title":"Historical roots of compression in language modeling","file":"why-compression/history.md","collapsible":true},
+    {"id":"modern-llm-compression","title":"Compression with modern LLMs","file":"why-compression/llms.md","collapsible":true}
+  ]},
+  {"id":"compression-primer","title":"Quick primer on compression","file":"compression/index.md","children":[
+    {"id":"literal-conversion","title":"Literal conversion","file":"compression/literals.md"},
+    {"id":"huffman-coding","title":"Huffman coding","file":"compression/huffman.md"},
+    {"id":"finite-state-entropy","title":"Finite State Entropy coding","file":"compression/fse.md"}
+  ]},
+  {"id":"proposed-metric","title":"Our proposed compression metric","file":"proposed/index.md","children":[
+    {"id":"metric-definition","title":"Definition","file":"proposed/definition.md"},
+    {"id":"metric-computation","title":"Computation","file":"proposed/computation.md"}
+  ]},
+  {"id":"experiments","title":"Experiments","file":"experiments/index.md","children":[
+    {"id":"interpretability","title":"Interpretability","file":"experiments/interpretability.md"}
+  ]},
+  {"id":"alternatives","title":"Alternative metrics we tried","file":"alternatives/index.md","children":[
+    {"id":"chosen-metric","title":"The metric we decided on","file":"alternatives/chosen.md"},
+    {"id":"unsuccessful-metrics","title":"The metrics that did not work","file":"alternatives/unsuccessful.md"}
+  ]}
+]
