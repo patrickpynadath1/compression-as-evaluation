@@ -1,16 +1,18 @@
+<div class="metric-algorithm">
+
+**Definition: compare how well real and generated text compress using the same real-data dictionary.**
+
 $$
-\widehat\mu_D=
-\frac1n\sum_{i=1}^{n}\delta_{r_{C,d_D}(x_i)},
-\qquad
-\widehat\mu_G=
-\frac1m\sum_{j=1}^{m}\delta_{r_{C,d_D}(y_j)}.
+\text{rate}(x)=\frac{\text{compressed bits of }x\text{ using the dictionary}}{\text{UTF-8 bytes in }x}
 $$
 
 $$
-\boxed{
-\widehat{\mathcal D}_{C,d_D}
-(D_{\mathrm{test}},G_{\mathrm{test}})
-=
-W_1(\widehat\mu_D,\widehat\mu_G).
-}
+\boxed{\text{score}=W_1(\text{real-text rates},\;\text{generated-text rates})}
 $$
+
+- **One rate per document:** compress each document separately with the same dictionary; reset the compressor between documents.
+- **Equal weight per document:** compare the two lists of rates using one-dimensional Wasserstein distance.
+- **Interpretation:** lower means the rate distributions are closer; zero does not imply the text distributions are identical.
+- **Units:** bits per UTF-8 byte; no language-model evaluator required.
+
+</div>

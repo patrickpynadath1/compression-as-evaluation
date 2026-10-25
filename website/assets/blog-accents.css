@@ -52,6 +52,18 @@ body {
 }
 .candidate-card > ul { margin-bottom: 0; padding-left: 22px; }
 
+.metric-algorithm {
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 10px;
+  background: var(--wash);
+  margin: 20px 0;
+}
+.metric-algorithm > p:first-child { margin-top: 0; color: var(--blue); }
+.metric-algorithm li { margin: 10px 0; }
+@media(max-width:760px) { .metric-algorithm { padding: 16px; } }
+
 .katex-display {
   background: #f2f7fc;
   border-color: var(--line);
